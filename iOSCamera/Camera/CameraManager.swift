@@ -11,7 +11,7 @@ import AVFoundation
 class CameraManager : ObservableObject{
     @Published var error : CameraError?
     
-    private var currentPosition = AVCaptureDevice.Position.unspecified
+    private var currentPosition = AVCaptureDevice.Position.front
     
     enum Status{
         case unconfigured

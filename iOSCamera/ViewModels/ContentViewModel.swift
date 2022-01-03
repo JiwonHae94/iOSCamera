@@ -42,7 +42,7 @@ class ContentViewModel : ObservableObject{
     }
     
     func switchCamera(){
-        currentLensFacing = !currentLensFacing
+        currentLensFacing.toggle()
         cameraManager.switchCamera()
     }
 }

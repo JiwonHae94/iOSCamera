@@ -20,6 +20,7 @@ extension CGImage {
       pixelBuffer,
       options: nil,
       imageOut: &image)
+      
     return image
   }
 }
