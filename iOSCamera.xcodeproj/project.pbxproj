@@ -23,6 +23,7 @@
 		7CE3EBCD27837140008D7521 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3EBCA27837140008D7521 /* ErrorView.swift */; };
 		7CE3EBCE27837140008D7521 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3EBCB27837140008D7521 /* FrameView.swift */; };
 		7CE3EBD027837210008D7521 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3EBCF27837210008D7521 /* ToggleButton.swift */; };
+		7CE3EBD3278374DD008D7521 /* CameraToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3EBD2278374DD008D7521 /* CameraToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		7CE3EBCA27837140008D7521 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		7CE3EBCB27837140008D7521 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		7CE3EBCF27837210008D7521 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		7CE3EBD2278374DD008D7521 /* CameraToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +114,8 @@
 		7CE3EB8D278368F1008D7521 /* iOSCamera */ = {
 			isa = PBXGroup;
 			children = (
-				7CE3EBBB2783692D008D7521 /* Camera */,
 				7CE3EB8E278368F1008D7521 /* iOSCameraApp.swift */,
+				7CE3EBBB2783692D008D7521 /* Camera */,
 				7CE3EBB927836900008D7521 /* ViewModels */,
 				7CE3EBB8278368FC008D7521 /* Views */,
 				7CE3EBBA2783690B008D7521 /* Models */,
@@ -156,6 +158,7 @@
 				7CE3EBCA27837140008D7521 /* ErrorView.swift */,
 				7CE3EBCB27837140008D7521 /* FrameView.swift */,
 				7CE3EBCF27837210008D7521 /* ToggleButton.swift */,
+				7CE3EBD2278374DD008D7521 /* CameraToggle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				7CE3EB8F278368F1008D7521 /* iOSCameraApp.swift in Sources */,
 				7CE3EBC8278370FA008D7521 /* CameraUtility.swift in Sources */,
 				7CE3EBCD27837140008D7521 /* ErrorView.swift in Sources */,
+				7CE3EBD3278374DD008D7521 /* CameraToggle.swift in Sources */,
 				7CE3EBD027837210008D7521 /* ToggleButton.swift in Sources */,
 				7CE3EBCE27837140008D7521 /* FrameView.swift in Sources */,
 				7CE3EBC027836B10008D7521 /* CameraError.swift in Sources */,

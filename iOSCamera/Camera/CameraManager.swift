@@ -11,6 +11,8 @@ import AVFoundation
 class CameraManager : ObservableObject{
     @Published var error : CameraError?
     
+    private var currentPosition = AVCaptureDevice.Position.unspecified
+    
     enum Status{
         case unconfigured
         case configured
@@ -21,8 +23,7 @@ class CameraManager : ObservableObject{
     let session = AVCaptureSession()
     
     private let sessionQueue = DispatchQueue(label: "iOSCameraApp.CameraSesssionQueue")
-    
-    
+    private var cameraInput : AVCaptureInput? = nil
     private let videoOutput = AVCaptureVideoDataOutput()
     
     private var status = Status.unconfigured
@@ -54,6 +55,27 @@ class CameraManager : ObservableObject{
         }
     }
     
+    func switchCamera(){
+        if(currentPosition == .front || currentPosition == .unspecified){
+            currentPosition = .back
+        }else{
+            currentPosition = .front
+        }
+        
+        if cameraInput != nil{
+            session.removeInput(cameraInput!)
+        }
+        session.removeOutput(videoOutput)
+        status = .unconfigured
+        configure()
+    }
+    
+    private func stop(){
+        sessionQueue.async {
+            self.session.stopRunning()
+        }
+    }
+    
     private func configureCaptureSession(){
         guard status == .unconfigured else{
             return
@@ -67,7 +89,7 @@ class CameraManager : ObservableObject{
             session.commitConfiguration()
         }
         
-        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
+        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: currentPosition)
         
         guard let camera = device else{
             // check whether camera is avaialble
@@ -79,11 +101,11 @@ class CameraManager : ObservableObject{
         
         do{
             // create camera input
-            let cameraInput = try AVCaptureDeviceInput(device: camera)
+            cameraInput = try AVCaptureDeviceInput(device: camera)
             
             // add camera input to the session
-            if session.canAddInput(cameraInput){
-                session.addInput(cameraInput)
+            if session.canAddInput(cameraInput!){
+                session.addInput(cameraInput!)
                 
             } else{
                 set(error: .CannotAddInput)
@@ -102,6 +124,7 @@ class CameraManager : ObservableObject{
                 videoConnection?.videoOrientation = .portrait
             }else{
                 set(error: .CannotAddOutput)
+                print(error)
                 status = .failed
                 return
             }

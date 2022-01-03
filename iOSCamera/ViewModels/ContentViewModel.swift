@@ -15,6 +15,7 @@ class ContentViewModel : ObservableObject{
     var comicFilter = false
     var monoFilter = false
     var crystalFilter = false
+    var currentLensFacing = false
     
     private let cameraManager = CameraManager.shared
     private let frameManager = FrameManager.shared
@@ -23,7 +24,6 @@ class ContentViewModel : ObservableObject{
     init() {
         setupSubscriptions()
     }
-    
     
     func setupSubscriptions() {
         cameraManager.$error
@@ -39,5 +39,10 @@ class ContentViewModel : ObservableObject{
                 return CGImage.create(from: buffer)
             }
             .assign(to: &$frame)
+    }
+    
+    func switchCamera(){
+        currentLensFacing = !currentLensFacing
+        cameraManager.switchCamera()
     }
 }
